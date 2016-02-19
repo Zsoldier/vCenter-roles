@@ -13,7 +13,15 @@ Find more details on the permissions sets [here](Roles Documentation.md).
 
 # Contributing:
 
-If you have a role you would like to see added to this repo, please open an [issue](https://github.com/rnelson0/vCenter-roles/issues) or [pull request](https://github.com/rnelson0/vCenter-roles/pulls) with the necessary details. You will need to provide the name of the Role, the privilege IDs, and documentation on the required privileges. You can obtain the privilege IDs in a few ways. Launch PowerShell and connect to your vCenter server with `Connect-VIServer`, then use one or more of these methods:
+If you have a role you would like to see added to this repo, please open an [issue](https://github.com/rnelson0/vCenter-roles/issues) or [pull request](https://github.com/rnelson0/vCenter-roles/pulls) with the necessary details. You will need a number of items to describe the role:
+
+# Description, the name of the product or use case the role is designed to be used with.
+# Reference URL, documentation of the product or use case and its required privileges.
+# Vendor, or "N/A" if based on a common use case.
+# Release, the version of vendor's product the role supports.
+# Privileges, a list of all the VIPrivileges by ID, not by Name.
+
+If you do not have a list of privileges by ID, you can obtain the privilege IDs in a few ways. Launch PowerShell and connect to your vCenter server with `Connect-VIServer`, then use one or more of these methods:
 
 * Get a list of all privileges and choose the correct ones: `Get-VIPrivilege | Select Name, Id`
 * Manually create a user with the correct privileges in vCenter and enumerate the privilege IDs: `Get-VIRole View | Get-VIPrivilege | select Name, Id`
@@ -21,9 +29,15 @@ If you have a role you would like to see added to this repo, please open an [iss
 
 Create a new JSON file with an array of these IDs, titled after the application/use case of the role. For instance, the **View** role's permissions (`System.Anonymous` and `System.View`) would go in a file called `Roles/View.json` that looks like this:
 
-    [
-        "System.Anonymous",
-        "System.View"
-    ]
-    
-Finally, add the new role's name and privilege documentation to [Roles Documentation.md]((Roles Documentation.md).
+	{
+		"description": "Sample View-only role",
+		"reference_url": "https://example.com/sample_view-only_role.html",
+		"vendor": "N/A",
+		"release": "6.0",
+		"privileges": [
+			"System.Anonymous",
+			"System.View"
+		]
+	}
+
+You can validate your json with one of the many online tools, such as [JSONLint](http://jsonlint.com/).
