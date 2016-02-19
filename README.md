@@ -15,11 +15,11 @@ Find more details on the permissions sets [here](Roles Documentation.md).
 
 If you have a role you would like to see added to this repo, please open an [issue](https://github.com/rnelson0/vCenter-roles/issues) or [pull request](https://github.com/rnelson0/vCenter-roles/pulls) with the necessary details. You will need a number of items to describe the role:
 
-# Description, the name of the product or use case the role is designed to be used with.
-# Reference URL, documentation of the product or use case and its required privileges.
-# Vendor, or "N/A" if based on a common use case.
-# Release, the version of vendor's product the role supports.
-# Privileges, a list of all the VIPrivileges by ID, not by Name.
+1. Description, the name of the product or use case the role is designed to be used with.
+1. Reference URL, documentation of the product or use case and its required privileges.
+1. Vendor, or "N/A" if based on a common use case.
+1. Release, the version of vendor's product the role supports.
+1. Privileges, a list of all the VIPrivileges by ID, not by Name.
 
 If you do not have a list of privileges by ID, you can obtain the privilege IDs in a few ways. Launch PowerShell and connect to your vCenter server with `Connect-VIServer`, then use one or more of these methods:
 
